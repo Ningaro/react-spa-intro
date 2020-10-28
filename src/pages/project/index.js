@@ -11,6 +11,7 @@ class ProjectPage extends React.Component {
 
     componentDidMount() {
         const id = this.props.match.params.id;
+        console.log(this.props);
         setTimeout(() => {
             const project = works.find(work => work.id === id);
 

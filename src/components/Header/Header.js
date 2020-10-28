@@ -5,13 +5,11 @@ import { Link } from 'react-router-dom';
 
 function Header(props) {
     return (
-        <header className='header'>
-            <div className='container'>
-                <Link to='/' className='header-brand'>
-                    {props.brand}
-                </Link>
-            </div>
-        </header>
+        <div className="row pb-3 pt-3">
+          <div className='header col d-flex justify-content-between p-2'>
+          {props.children}
+          </div>
+        </div>
     );
 }
 
