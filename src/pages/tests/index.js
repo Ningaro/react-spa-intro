@@ -26,8 +26,7 @@ class TestsPage extends React.Component {
       if (elem != testQuest[i].trueAns) {console.log(`Ошибка в задание ${i}`); miss++;}
     });
     this.setState({mistakes : miss});
-    console.log("mistakes: "+mistakes)
-    if (mistakes <= 0) this.setState({alertType : 2})
+    if (miss <= 0) this.setState({alertType : 2})
     else this.setState({alertType : 1})
 
   }
@@ -35,7 +34,6 @@ class TestsPage extends React.Component {
       const ansId = event.target.value;
       const id = event.target.name;
       this.state.ans[id] = ansId;
-      console.log('id: '+ id, 'ansId: ' + this.state.ans[id]);
   };
 
     render() {
@@ -48,17 +46,16 @@ class TestsPage extends React.Component {
               <div>Здраствуйте, {userData.name}</div>
               <Link to={baseUrl + "/"}>Выйти</Link>
             </Header>
-              <WhiteForm>
-              {console.log(testingMod)}
+            <WhiteForm>
               {testingMod ? (
               <form>
               {testQuest.map((quest) => (
                             <Test key={quest.id} answerTest={this.radioChange} closeTest={this.openTest} quest={quest} />
                         ))}
-              {alertType === 2 ? (<div className="alert alert-success alert-dismissible fade show" role="alert">
+              {alertType == 2 ? (<div className="alert alert-success alert-dismissible fade show" role="alert">
                 <strong>Отлично!</strong> Тест выполнен без ошибок.
               </div>) : (null)}
-              {alertType === 1 ? (<div className="alert alert-danger alert-dismissible fade show" role="alert">
+              {alertType == 1 ? (<div className="alert alert-danger alert-dismissible fade show" role="alert">
                 <strong>Ошибки: {mistakes}</strong> Перепройдите тест снова.
               </div>) : (null)}
 
@@ -77,7 +74,7 @@ class TestsPage extends React.Component {
               </div>
             )}
 
-              </WhiteForm>
+            </WhiteForm>
           </div>
         );
     }
