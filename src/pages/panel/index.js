@@ -1,16 +1,25 @@
 import React from 'react';
-import Auth from '../../components/Auth/Auth';
+import Header from '../../components/Header/Header';
+import { Link } from 'react-router-dom';
+import WhiteForm from '../../components/WhiteForm/WhiteForm';
+import Table from '../../components/Table/Table';
 
-class HomePage extends React.Component {
+class PanelPage extends React.Component {
 
     render() {
-
+        const  userData = this.props.location.state;
         return (
-          <div className="row">
-            Welcome to panel.
+          <div className="col-12 col-md-8">
+            <Header>
+              <div>Здраствуйте, {userData.name}</div>
+              <Link to="/">Выйти</Link>
+            </Header>
+            <WhiteForm>
+            <Table/>
+            </WhiteForm>
           </div>
         );
     }
 }
 
-export default HomePage;
+export default PanelPage;
