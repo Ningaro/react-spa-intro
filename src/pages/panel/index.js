@@ -8,11 +8,12 @@ class PanelPage extends React.Component {
 
     render() {
         const  userData = this.props.location.state;
+        const baseUrl = process.env.PUBLIC_URL; // will be /hypercomp
         return (
           <div className="col-12 col-md-8">
             <Header>
               <div>Здраствуйте, {userData.name}</div>
-              <Link to="/">Выйти</Link>
+              <Link to={baseUrl + "/"}>Выйти</Link>
             </Header>
             <WhiteForm>
             <Table/>

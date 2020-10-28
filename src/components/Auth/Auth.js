@@ -58,11 +58,12 @@ class Auth extends React.Component {
 
     render() {
       const { login, loginError, password, passwordError, user, admin, userData } = this.state;
+      const baseUrl = process.env.PUBLIC_URL; // will be /hypercomp
     return (
         <WhiteForm>
           {console.log('user: '+user, 'admin: '+admin)}
-        {user ? (<Redirect push to={{ pathname: "/tests", state: userData }} />) : (null)}
-        {admin ? (<Redirect push to={{ pathname: "/panel", state: userData }} />): (null)}
+        {user ? (<Redirect push to={{ pathname: baseUrl + '/tests', state: userData }} />) : (null)}
+        {admin ? (<Redirect push to={{ pathname: baseUrl + '/panel', state: userData }} />): (null)}
           <form onSubmit={this.submitHandler}>
             <div className="form-group">
               <label>Логин</label>
